@@ -5,34 +5,29 @@ class acceuil extends StatelessWidget {
   final String todo;
 
   // In the constructor, require a Todo.
-  acceuil({Key key, @required this.todo}) : super(key: key);
+  acceuil({Key key, this.todo}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            pinned: false,
+            floating: true,
+            expandedHeight: 150,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text("Bienvenue chez nous!!"),
+              background: Image.asset(
+                'assets/images/back.jpg',
+                fit: BoxFit.fill
+              ),
+            ),
 
-                            leading: Icon(Icons.fastfood),
-                            title: Text('Bienvenue chez nous',
-                            style: TextStyle(
-                                              fontSize: 13,
-
-                                              ),),
-                            backgroundColor: Colors.orange,
-
-                            actions: <Widget>[
-
-
-                                Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Icon(Icons.local_cafe), // icon
-                                  Text("$todo", style: TextStyle(fontSize: 20)), // text
-                                ],
-                              ),
-
-                            ],),
-
-      body: Navigation(),
+          ),
+          SliverFillRemaining(child: Navigation(),)
+        ],
+      )
+      
 
 
     );

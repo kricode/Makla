@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:makla/pages/ItemsPage.dart';
-import '../utils/Classes.dart';
+import 'package:makla/pages/list.dart';
+import '../Utils/Classes.dart';
 
 
 
 class Carte extends StatefulWidget {
-  Carte({Key key}) : super(key: key);
 
+  List<Commande> commandes;
+  Carte({Key key, @required this.commandes}) : super(key: key);
+
+  
   _CarteState createState() => _CarteState();
 }
 
@@ -43,7 +46,7 @@ var bannerImage = [
       var bannerView = GestureDetector(
         onTap: (){
           Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => ItemPage( )));
+                                builder: (context) => list( categorie: bannerItems[x], commandes: widget.commandes,)));
           print( bannerItems[x] );
         },
         child: Padding(

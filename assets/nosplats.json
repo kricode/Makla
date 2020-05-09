@@ -1,0 +1,56 @@
+[
+    {
+        "id": "id1",
+        "nom": "plat1",
+        "image": "assets/images/plat1.jpg",
+        "categorie": "plat",
+        "quantity": "20",
+        "contenu": [
+          "contenu 1",
+          "contenu2",
+          "contenu3",
+          "contenu4",
+          "contenu5",
+          "contenu6",
+          "contenu7",
+          "contenu8"
+        ],
+        "prix": "1000"
+      },
+      {
+        "id": "id2",
+        "nom": "plat2",
+        "image": "assets/images/plat1.jpg",
+        "categorie": "plat",
+        "quantity": "20",
+        "contenu": [
+          "contenu 1",
+          "contenu2",
+          "contenu3",
+          "contenu4",
+          "contenu5",
+          "contenu6",
+          "contenu7",
+          "contenu8"
+        ],
+        "prix": "1000"
+      },
+      {
+        "id": "id3",
+        "nom": "plat3",
+        "image": "assets/images/plat1.jpg",
+        "categorie": "plat",
+        "quantity": "20",
+        "contenu": [
+          "contenu 1",
+          "contenu2",
+          "contenu3",
+          "contenu4",
+          "contenu5",
+          "contenu6",
+          "contenu7",
+          "contenu8"
+        ],
+        "prix": "1000"
+      }
+]

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import '../Utils/Classes.dart';
 
 
 
 
 class commande extends StatefulWidget {
-  commande({Key key}) : super(key: key);
+  Commande com;
+  commande({Key key, @required this.com}) : super(key: key);
 
   _commandeState createState() => _commandeState();
 }
@@ -40,8 +42,8 @@ class _commandeState extends State<commande> {
           
           ClipRRect(
             borderRadius: BorderRadius.only(topLeft: Radius.circular(10.0),bottomLeft: Radius.circular(10.0)),
-            child: Text("image here"),
-            //child: Image.asset(object["placeImage"],width: 80,height: 80,fit: BoxFit.cover,),
+            
+            child: Image.asset(widget.com.image,width: 80,height: 80,fit: BoxFit.cover,),
           ),
           SizedBox(
             width: screenWidth /(1.8),
@@ -50,14 +52,12 @@ class _commandeState extends State<commande> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text("here the name of item"),
+                  Text(widget.com.nom),
                   Padding(
                     padding: const EdgeInsets.only(top: 2.0,bottom: 2.0),
-                    child: Text("here the list of componements",overflow: TextOverflow.ellipsis,style: TextStyle(fontSize: 12.0,color: Colors.black54,),maxLines: 1,),
+                    child: Text(widget.com.prix.toString(),overflow: TextOverflow.ellipsis,style: TextStyle(fontSize: 12.0,color: Colors.black54,),maxLines: 1,),
                   ),
-                  Text("Min. Order: "
-                      //"${object["minOrder"]}"
-                      "",style: TextStyle(fontSize: 12.0,color: Colors.black54),)
+                  
                 ],
               ),
             ),
@@ -71,12 +71,16 @@ class _commandeState extends State<commande> {
                 
                 children: <Widget>[
 
-                  IconButton(icon: Icon(Icons.add), onPressed: (){},color: Colors.blue,),
+                  IconButton(icon: Icon(Icons.add), onPressed: (){
+                    widget.com.increment(widget.com);
+                  },color: Colors.blue,),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0,bottom: 2.0),
-                    child: Text("0",overflow: TextOverflow.ellipsis,style: TextStyle(fontSize: 20,color: Colors.black54,),maxLines: 1,),
+                    child: Text(widget.com.quantite.toString(),overflow: TextOverflow.ellipsis,style: TextStyle(fontSize: 20,color: Colors.black54,),maxLines: 1,),
                   ),
-                  IconButton(icon: Icon(Icons.remove), onPressed: (){},color: Colors.blue,),
+                  IconButton(icon: Icon(Icons.remove), onPressed: (){
+                    widget.com.decrement(widget.com);
+                  },color: Colors.blue,),
 
                 ],
               ),

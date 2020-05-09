@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:makla/Utils/Classes.dart';
+import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:maakla/widgets/Navigation.dart';
 import './acceuil.dart';
-import './ItemsPage.dart';
+
 
 
 class home extends StatefulWidget {
@@ -12,9 +13,14 @@ class home extends StatefulWidget {
 class _homeState extends State<home> {
   String onChange ;
   String onSubmit ;
-  Plat plt;
+
   @override
   Widget build(BuildContext context) {
+
+        var width = MediaQuery.of(context).size.width;
+            var height = MediaQuery.of(context).size.height;
+
+
     return   Scaffold(
 
 
@@ -25,21 +31,33 @@ class _homeState extends State<home> {
         body:  new SingleChildScrollView(
             child: Center(
                 child: Container(
-                    child:new Column (
+                  height: height,
+                  decoration: BoxDecoration(
+                                           gradient: LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.center,
+                                        colors: [Colors.orangeAccent[100], Colors.yellow[50]])),
+
+                    child:Center(
+                    child :Column (
 
 
                       children: <Widget>[
-                        new ItemPage(plt: plt,),
-
-                        new SizedBox(
-                          height: 60,
+                        ClipPath(
+                          clipper: WaveClipperOne(),
+                          child:Container(
+                            
+                            color: Colors.orange,
+                            width: width,
+                            height: height/3,
+                            child:Column(children: <Widget>[
+                        SizedBox(
+                          height: height / 6,
                         ),
                         new Text('Bienvenue ' ,maxLines: 1,textAlign: TextAlign.center,
                             style: new TextStyle(
-                              color:Colors.deepOrangeAccent,fontSize:45,fontWeight:FontWeight.bold ,)),
-                        new SizedBox(
-                          height: 40,
-                        ),
+                              color:Colors.orange[50],fontSize:45,fontWeight:FontWeight.bold ,)),
+                        
 /*
                         new Container(
 
@@ -49,13 +67,22 @@ class _homeState extends State<home> {
                         SizedBox(
                           height: 40,
                         ),
+                          ],),
+                          ) 
+                          
+                        ),
+                        SizedBox(
+                          height: height/6,
+                        ),
+
+                        
 
                         Container(
 
                           child: Row(
                             children: <Widget>[
                               SizedBox(
-                                width: 29,
+                                width: width/6,
                               ),
                               new Padding(
                                 padding: EdgeInsets.all(15),
@@ -118,7 +145,7 @@ class _homeState extends State<home> {
                             ),
                             onPressed: (){
                               Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => acceuil(todo: onChange)
+                                builder: (context) => Navigation()
                               ));
                             },
                           ),
@@ -140,6 +167,6 @@ class _homeState extends State<home> {
 
 
 
-    );
+    ));
   }
 }

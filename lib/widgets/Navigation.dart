@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 import '../pages/facture.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import '../widgets/Card.dart';
+import '../Utils/Classes.dart';
 
 
 class Navigation extends StatefulWidget {
+
+List<Commande> commandes = [];
+  Navigation({Key key,  @required this.commandes}) : super(key: key);
 
   @override
   _NavigationState createState() => _NavigationState();
 }
 
 class _NavigationState extends State<Navigation> {
+
+
+  List<Commande> commandes = [];
 
   int _currentIndex = 0;
   PageController _pageController=PageController(
@@ -52,9 +59,9 @@ class _NavigationState extends State<Navigation> {
           children: <Widget>[
 
 
-            Container( child: Carte(),),
-            Container(color: Colors.red,),
-            Container(child: facture(),),
+            Container( child: Carte(commandes: commandes,),),
+            Container(),
+            Container(child: facture(commandes: widget.commandes,),),
           ],
         ),
       ),

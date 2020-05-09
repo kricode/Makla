@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import '../widgets/commande.dart';
+import '../Utils/Classes.dart';
+import '../widgets/commande.dart';
+import '../widgets/commande.dart';
 
 
 
 class facture extends StatefulWidget {
-  
-  facture({Key key}) : super(key: key);
+  List<Commande> commandes;
+  facture({Key key , @required this.commandes}) : super(key: key);
 
   _factureState createState() => _factureState();
 }
@@ -50,14 +53,107 @@ class _factureState extends State<facture> {
               )),
               ),
               SizedBox(height: 20,),
-              commande(),
+              Container(height: screenHeight*2/3,
+              
+                child: ListView.builder(
+                itemCount: 10,
+                padding: const EdgeInsets.all(16.0),
+                itemBuilder: (BuildContext context, int index){
+                  return Text("hu");
+                  //return commande(com: widget.commandes[index],);
+
+                },
+              
+              ),),
+            
+               Align(
+      alignment: Alignment.center,
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        splashColor: Colors.orangeAccent,
+        color: Colors.deepOrange,
+        onPressed: () {
+          print("boutton cliqué");
+                    if ( widget.commandes == null){
+          return 
+              showDialog<String>(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  title: const Text('Erreur'),
+                  content: Text(
+                    'Vous n''avez rien commandé!!',
+                  ),
+                  actions: <Widget>[
+                    
+                    FlatButton(
+                      child: Text('OK'),
+                      onPressed: () => Navigator.pop(context, 'OK'),
+                    ),
+                  ],
+                ),
+              ).then((returnVal) {
+                if (returnVal != null) {
+                  Scaffold.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Cherchez vos plats dans notre menu!'),
+                      action: SnackBarAction(label: 'OK', onPressed: () {}),
+                    ),
+                  );
+                }
+              });
+        
+        }else return {
+          showDialog<String>(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  title: const Text('Confirmation'),
+                  content: Text(
+                    'Etes-vous sûrs de votre choix?',
+                  ),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text('Non'),
+                      onPressed: () => Navigator.pop(context, 'Cancel'),
+                    ),
+                    FlatButton(
+                      child: Text('Oui'),
+                      onPressed: () => Navigator.pop(context, 'OK'),
+                    ),
+                  ],
+                ),
+              ).then((returnVal) {
+                if (returnVal != null) {
+                  Scaffold.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('You clicked: $returnVal'),
+                      action: SnackBarAction(label: 'OK', onPressed: () {}),
+                    ),
+                  );
+                }
+              })
+
+        };
+      
+        },
+        child: IconButton(
+          icon: Icon(Icons.check, color: Colors.white70,),
+          
+          
+        ),
+        
+        
+        elevation: 10,
+      ),
+    )
+
+            
             ],
           ),
       ),
               
-      floatingActionButton: FloatingActionButton(onPressed: (){},
-          backgroundColor: Colors.orange,
-      child: Icon(Icons.check,color: Colors.white, )),
+      
     );
   }
 }

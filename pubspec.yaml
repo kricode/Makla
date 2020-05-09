@@ -19,6 +19,11 @@ environment:
 dependencies:
   bottom_navy_bar: ^5.4.0
   gradient_app_bar: ^0.0.1
+  gcloud:
+  http:
+  rpc:
+  web_socket_channel: ^1.1.0
+
 
   flutter:
     sdk: flutter
@@ -44,11 +49,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/logoresto.png
-    - assets/images/cat/plat.jpg
-    - assets/images/cat/pizza.jpg
-    - assets/images/cat/sandwich.jpg
-    - assets/images/cat/limonade.jpg
-    - assets/images/cat/dessert.jpg
+    - assets/images/back.jpg
+    - assets/nosplats.json
+
+    
 
 
   # To add assets to your application, add an assets section, like this:
